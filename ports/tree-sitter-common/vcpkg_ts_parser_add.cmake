@@ -27,7 +27,7 @@ function(vcpkg_ts_parser_add)
     set(TS_TOOLS_DIR "${CURRENT_HOST_INSTALLED_DIR}/tools/tree-sitter")
 
     vcpkg_add_to_path(PREPEND "${TS_TOOLS_DIR}/bin")
-    find_program(TREE_SITTER_CLI NAMES tree-sitter tree-sitter.cmd PATHS "${TS_TOOLS_DIR}" "bin" NO_DEFAULT_PATHS)
+    find_program(TREE_SITTER_CLI NAMES tree-sitter.cmd tree-sitter PATHS "${TS_TOOLS_DIR}" "bin" NO_DEFAULT_PATHS)
     vcpkg_execute_required_process(
       COMMAND "${TREE_SITTER_CLI}" generate --log --abi ${PARSER_MIN_ABI_VERSION}
       WORKING_DIRECTORY ${PARSER_SOURCE_PATH}

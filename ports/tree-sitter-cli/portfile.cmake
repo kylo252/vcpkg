@@ -9,7 +9,7 @@ else()
 endif()
 vcpkg_add_to_path(PREPEND "${NODEJS_DIR}")
 
-find_program(NPM NAMES npm npm.cmd PATHS "${NODEJS_DIR}" NO_DEFAULT_PATHS REQUIRED)
+find_program(NPM NAMES npm.cmd npm PATHS "${NODEJS_DIR}" NO_DEFAULT_PATHS REQUIRED)
 message(STATUS "using npm: '${NPM}'")
 
 set(TS_TOOLS_DIR "${CURRENT_PACKAGES_DIR}/tools/tree-sitter")
