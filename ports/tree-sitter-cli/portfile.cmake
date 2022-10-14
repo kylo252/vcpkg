@@ -3,7 +3,7 @@ set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
 # installing through npm until cargo is supported in vcpkg, see https://github.com/microsoft/vcpkg/issues/20619
 set(NODEJS_DIR "${CURRENT_HOST_INSTALLED_DIR}/tools/node")
 vcpkg_add_to_path(PREPEND "${NODEJS_DIR}/bin")
-find_program(NPM NAMES npm PATHS "${NODEJS_DIR}/bin" NO_DEFAULT_PATHS REQUIRED)
+find_program(NPM NAMES npm npm.cmd PATHS "${NODEJS_DIR}/bin" NO_DEFAULT_PATHS REQUIRED)
 
 set(TS_TOOLS_DIR "${CURRENT_PACKAGES_DIR}/tools/tree-sitter")
 file(MAKE_DIRECTORY "${TS_TOOLS_DIR}")
