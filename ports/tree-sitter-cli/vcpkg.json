@@ -1,0 +1,13 @@
+{
+  "name": "tree-sitter-cli",
+  "version": "0.20.6",
+  "description": "CLI for generating fast incremental parsers",
+  "homepage": "https://github.com/tree-sitter/tree-sitter",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "vcpkg-tool-nodejs",
+      "host": true
+    }
+  ]
+}

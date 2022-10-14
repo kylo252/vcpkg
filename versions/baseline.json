@@ -7476,6 +7476,10 @@
       "baseline": "2022-08-10",
       "port-version": 0
     },
+    "tree-sitter-cli": {
+      "baseline": "0.20.6",
+      "port-version": 0
+    },
     "tree-sitter-common": {
       "baseline": "0.20.6",
       "port-version": 0
