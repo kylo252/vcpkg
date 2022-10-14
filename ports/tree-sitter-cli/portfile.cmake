@@ -20,6 +20,11 @@ vcpkg_execute_required_process(
   LOGNAME npm-install-${TARGET_TRIPLET}
 )
 
-vcpkg_add_to_path(PREPEND "${TS_TOOLS_DIR}/bin")
+if(VCPKG_TARGET_IS_WINDOWS)
+  set(LICENSE_FILE "${TS_TOOLS_DIR}/node_modules/${PORT}/LICENSE")
+else()
+  set(LICENSE_FILE "${TS_TOOLS_DIR}/lib/node_modules/${PORT}/LICENSE")
+endif()
+file(INSTALL "${LICENSE_FILE}" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
 
-file(INSTALL "${TS_TOOLS_DIR}/lib/node_modules/${PORT}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
+vcpkg_add_to_path(PREPEND "${TS_TOOLS_DIR}/bin")

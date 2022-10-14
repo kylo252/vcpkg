@@ -24,10 +24,15 @@ function(vcpkg_ts_parser_add)
 
   if(NOT _abi_version EQUAL PARSER_MIN_ABI_VERSION)
     message(STATUS "Re-generating parser with min ABI-version: ${PARSER_MIN_ABI_VERSION}")
-    set(TS_TOOLS_DIR "${CURRENT_HOST_INSTALLED_DIR}/tools/tree-sitter")
-
-    vcpkg_add_to_path(PREPEND "${TS_TOOLS_DIR}/bin")
-    find_program(TREE_SITTER_CLI NAMES tree-sitter.cmd tree-sitter PATHS "${TS_TOOLS_DIR}" "bin" NO_DEFAULT_PATHS)
+    set(TS_TOOLS_PREFIX "${CURRENT_HOST_INSTALLED_DIR}/tools/tree-sitter")
+    if(VCPKG_TARGET_IS_WINDOWS)
+      set(TS_TOOLS_DIR "${TS_TOOLS_PREFIX}")
+    else()
+      set(TS_TOOLS_DIR "${TS_TOOLS_PREFIX}/bin")
+    endif()
+    vcpkg_add_to_path(PREPEND "${TS_TOOLS_DIR}")
+    find_program(TREE_SITTER_CLI NAMES tree-sitter.cmd tree-sitter PATHS "${TS_TOOLS_DIR}" NO_DEFAULT_PATHS)
+    message(STATUS "using tree-sitter-cli: '${TREE_SITTER_CLI}'")
     vcpkg_execute_required_process(
       COMMAND "${TREE_SITTER_CLI}" generate --log --abi ${PARSER_MIN_ABI_VERSION}
       WORKING_DIRECTORY ${PARSER_SOURCE_PATH}
