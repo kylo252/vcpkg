@@ -1,0 +1,16 @@
+#ifndef @PARSER_HEADER_GUARD@
+#define @PARSER_HEADER_GUARD@
+
+#include <tree_sitter/parser.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern TSLanguage *tree_sitter_@PARSER_LANGUAGE@();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // @PARSER_HEADER_GUARD@

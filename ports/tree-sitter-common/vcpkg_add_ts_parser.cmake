@@ -33,6 +33,8 @@ function(vcpkg_add_ts_parser)
   endif()
 
   configure_file("${CURRENT_HOST_INSTALLED_DIR}/share/tree-sitter-common/CMakeLists.txt.in" "${PARSER_SOURCE_PATH}/CMakeLists.txt" @ONLY)
+  file(COPY "${CURRENT_HOST_INSTALLED_DIR}/share/tree-sitter-common/parser.h.in" DESTINATION "${PARSER_SOURCE_PATH}/${PARSER_NAME}.h.in")
+  file(COPY "${CURRENT_HOST_INSTALLED_DIR}/share/tree-sitter-common/parser.pc.in" DESTINATION "${PARSER_SOURCE_PATH}/${PARSER_NAME}.pc.in")
 
   vcpkg_cmake_configure(
     SOURCE_PATH "${PARSER_SOURCE_PATH}"
